@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tableLayout;
     private TabsAdapter tabsAdapter;
-    private AppBarLayout appBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         tableLayout = findViewById(R.id.tablayoutnew);
         tableLayout.setupWithViewPager(viewPager);
-        appBarLayout = findViewById(R.id.appbarlayout);
     }
 
     @Override

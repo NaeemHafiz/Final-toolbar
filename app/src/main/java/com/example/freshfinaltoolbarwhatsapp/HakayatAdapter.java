@@ -16,11 +16,6 @@ public class HakayatAdapter extends RecyclerView.Adapter<HakayatAdapter.MyViewHo
         this.hakayatcategorylist = hakayatcategorylist;
     }
 
-    public void updateData(List<ChildHakayatCategory> hakayatcategorylist) {
-        this.hakayatcategorylist = hakayatcategorylist;
-        notifyDataSetChanged();
-    }
-
 
     @NonNull
     @Override
@@ -54,6 +49,11 @@ public class HakayatAdapter extends RecyclerView.Adapter<HakayatAdapter.MyViewHo
             super(itemView);
             hakayat = itemView.findViewById(R.id.hakayat1);
         }
+    }
+
+    public void updateData(List<ChildHakayatCategory> hakayatcategorylist) {
+        this.hakayatcategorylist = hakayatcategorylist;
+        notifyDataSetChanged();
     }
 
 }

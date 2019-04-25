@@ -2,7 +2,6 @@ package com.example.freshfinaltoolbarwhatsapp;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,7 +31,7 @@ public class ChatsFragment extends Fragment {
 
 
     public ChatsFragment() {
-        getData();
+
         // Required empty public constructor
     }
 
@@ -62,10 +61,7 @@ public class ChatsFragment extends Fragment {
             @Override
             public void onFailure(Call<ParentHakayatCategory> call, Throwable t) {
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }
-
-
 }
