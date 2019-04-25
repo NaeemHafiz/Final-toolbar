@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tableLayout;
-    public TabsAdapter tabsAdapter;
+    private TabsAdapter tabsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
