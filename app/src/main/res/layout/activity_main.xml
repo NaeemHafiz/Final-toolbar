@@ -9,8 +9,9 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
         <include
             android:id="@+id/app_toolbar"
             layout="@layout/app_toolbar" />

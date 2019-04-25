@@ -1,6 +1,7 @@
 package com.example.freshfinaltoolbarwhatsapp;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tableLayout;
     private TabsAdapter tabsAdapter;
+    private AppBarLayout appBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         tableLayout = findViewById(R.id.tablayoutnew);
         tableLayout.setupWithViewPager(viewPager);
+        appBarLayout = findViewById(R.id.appbarlayout);
     }
 
     @Override
