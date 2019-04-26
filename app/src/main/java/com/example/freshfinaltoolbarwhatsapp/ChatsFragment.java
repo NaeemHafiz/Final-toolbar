@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -26,8 +29,8 @@ public class ChatsFragment extends Fragment {
     private List<ChildHakayatCategory> childHakayatCategoryList = new ArrayList<>();
     private RecyclerView recyclerView;
     private HakayatAdapter hakayatAdapter;
-    private LinearLayoutManager linearLayoutManager;
     private ApiInterface apiInterface;
+    private SearchView s;
 
 
     public ChatsFragment() {
@@ -39,6 +42,7 @@ public class ChatsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true); // Add this! (as above)
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chats1, container, false);
         recyclerView = view.findViewById(R.id.recyclerview);
@@ -63,5 +67,11 @@ public class ChatsFragment extends Fragment {
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.app_menu, menu);
     }
 }
