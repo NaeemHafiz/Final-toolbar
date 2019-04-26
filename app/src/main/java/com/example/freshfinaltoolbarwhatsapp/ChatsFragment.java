@@ -1,6 +1,7 @@
 package com.example.freshfinaltoolbarwhatsapp;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class ChatsFragment extends Fragment {
     private HakayatAdapter hakayatAdapter;
     private ApiInterface apiInterface;
     private SearchView s;
+    private ProgressDialog progressDoalog;
 
 
     public ChatsFragment() {
@@ -45,6 +47,7 @@ public class ChatsFragment extends Fragment {
         setHasOptionsMenu(true); // Add this! (as above)
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chats1, container, false);
+        progressDoalog = new ProgressDialog(getActivity());
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         hakayatAdapter = new HakayatAdapter(childHakayatCategoryList);
@@ -54,11 +57,13 @@ public class ChatsFragment extends Fragment {
     }
 
     private void getData() {
+        showProgressDialog();
         apiInterface = RetrofitClient.getRetrofit().create(ApiInterface.class);
         Call<ParentHakayatCategory> call = apiInterface.performShowCategoriesData();
         call.enqueue(new Callback<ParentHakayatCategory>() {
             @Override
             public void onResponse(Call<ParentHakayatCategory> call, Response<ParentHakayatCategory> response) {
+                hideProgressDialog();
                 hakayatAdapter.updateData(response.body().getData());
             }
 
@@ -69,9 +74,22 @@ public class ChatsFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.app_menu, menu);
+    private void showProgressDialog() {
+        if (progressDoalog != null) {
+            progressDoalog.setMax(100);
+            progressDoalog.setMessage("Please Wait....");
+            progressDoalog.show();
+        }
     }
+
+    private void hideProgressDialog() {
+        if (progressDoalog != null)
+            progressDoalog.dismiss();
+    }
+//
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.app_menu, menu);
+//    }
 }

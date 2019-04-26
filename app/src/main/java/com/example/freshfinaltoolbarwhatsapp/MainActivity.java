@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity  {
         tableLayout.setupWithViewPager(viewPager);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        super.onCreateOptionsMenu(menu);
-//        getMenuInflater().inflate(R.menu.app_menu, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.app_menu, menu);
+        return true;
+    }
 }
