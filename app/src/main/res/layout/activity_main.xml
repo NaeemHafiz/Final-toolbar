@@ -24,8 +24,8 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             app:elevation="0dp"
-            app:tabIndicatorHeight="3dp"
             app:tabIndicatorColor="#fff"
+            app:tabIndicatorHeight="3dp"
             app:tabMode="fixed"
             app:tabSelectedTextColor="#fff"
             app:tabTextColor="#d3d3d3" />
@@ -38,5 +38,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tab_layout"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_btn"
+        style="@style/Widget.Design.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_search"
+        app:backgroundTint="#E91E63"
+        app:fabSize="normal" />
+    <!--app:layout_anchor="@id/app_bar_layoutdetails"-->
+
 
 </android.support.design.widget.CoordinatorLayout>
