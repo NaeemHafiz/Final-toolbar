@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -18,10 +19,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         toolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle("Whatsapp");
+            getSupportActionBar().setTitle("WhatsApp");
 
         viewPager = findViewById(R.id.viewpager);
         tabsAdapter = new TabsAdapter(getSupportFragmentManager());
@@ -37,4 +39,5 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.app_menu, menu);
         return true;
     }
+
 }
