@@ -44,7 +44,6 @@ public class ChatsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setHasOptionsMenu(true); // Add this! (as above)
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chats1, container, false);
         progressDoalog = new ProgressDialog(getActivity());
