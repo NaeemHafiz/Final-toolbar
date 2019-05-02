@@ -1,11 +1,15 @@
 package com.example.freshfinaltoolbarwhatsapp;
 
+import android.content.res.Resources;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,14 +20,42 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ListView;
 
-public class NavigationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class NavigationActivity extends AppCompatActivity {
+
+    private ExpandableListView listView;
+    private List<String> listHeader;
+    private HashMap<String, List<String>> listHashMap;
+    private ExpandableAdapter expandableAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+        listView = findViewById(R.id.listview);
+        initData();
+        expandableAdapter = new ExpandableAdapter(NavigationActivity.this, listHeader, listHashMap);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        Resources r = getResources();
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                50, r.getDisplayMetrics());
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            listView.setIndicatorBounds(width - px, width);
+        } else {
+            listView.setIndicatorBoundsRelative(width - px, width);
+        }
+        listView.setAdapter(expandableAdapter);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -50,7 +82,43 @@ public class NavigationActivity extends AppCompatActivity
         toggle.setHomeAsUpIndicator(R.drawable.ic_menu_camera);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void initData() {
+        listHeader = new ArrayList<>();
+        listHashMap = new HashMap<>();
+        listHeader.add("EDMtDev");
+        listHeader.add("Android");
+        listHeader.add("IOS");
+        listHeader.add("Symbian");
+
+        List<String> edmtdev = new ArrayList<>();
+        edmtdev.add("This is ExpandableListView");
+
+        List<String> androistudio = new ArrayList<>();
+        androistudio.add("android");
+        androistudio.add("android");
+        androistudio.add("android");
+        androistudio.add("android");
+        androistudio.add("android");
+
+        List<String> mac = new ArrayList<>();
+        mac.add("android");
+        mac.add("android");
+        mac.add("android");
+        mac.add("android");
+        mac.add("android");
+
+        List<String> nokia = new ArrayList<>();
+        nokia.add("android");
+        nokia.add("android");
+        nokia.add("android");
+        nokia.add("android");
+        nokia.add("android");
+        listHashMap.put(listHeader.get(0), edmtdev);
+        listHashMap.put(listHeader.get(1), androistudio);
+        listHashMap.put(listHeader.get(2), mac);
+        listHashMap.put(listHeader.get(3), nokia);
     }
 
     @Override
@@ -86,35 +154,6 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        Fragment fragment = null;
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            fragment = new CameraFragment();
-            changeFragment(fragment);
-            // Handle the camera action
-
-        } else if (id == R.id.nav_gallery) {
-            fragment = new GalleryFragment();
-            changeFragment(fragment);
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     private void changeFragment(Fragment fragment) {
 
