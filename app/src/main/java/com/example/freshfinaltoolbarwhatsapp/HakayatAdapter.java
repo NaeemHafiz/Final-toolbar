@@ -49,18 +49,13 @@ public class HakayatAdapter extends RecyclerView.Adapter<HakayatAdapter.MyViewHo
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             hakayat = itemView.findViewById(R.id.hakayat1);
+
         }
     }
 
     public void updateData(List<ChildHakayatCategory> hakayatcategorylist) {
         this.hakayatcategorylist = hakayatcategorylist;
         notifyDataSetChanged();
-    }
 
-    public void setFilter(List<ChildHakayatCategory> newList) {
-        hakayatcategorylist = new ArrayList<>();
-        hakayatcategorylist.addAll(newList);
-        notifyDataSetChanged();
     }
-
 }

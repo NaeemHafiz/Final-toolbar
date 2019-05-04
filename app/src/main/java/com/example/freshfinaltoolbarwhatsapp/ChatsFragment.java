@@ -3,7 +3,11 @@ package com.example.freshfinaltoolbarwhatsapp;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -15,7 +19,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +31,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChatsFragment extends Fragment {
+public class ChatsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private List<ChildHakayatCategory> childHakayatCategoryList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -33,6 +39,7 @@ public class ChatsFragment extends Fragment {
     private ApiInterface apiInterface;
     private SearchView s;
     private ProgressDialog progressDoalog;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     public ChatsFragment() {
@@ -48,11 +55,39 @@ public class ChatsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chats1, container, false);
         progressDoalog = new ProgressDialog(getActivity());
         recyclerView = view.findViewById(R.id.recyclerview);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        swipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         hakayatAdapter = new HakayatAdapter(childHakayatCategoryList);
         recyclerView.setAdapter(hakayatAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         getData();
-        return view;
+    }
+
+    private void refreshContent() {
+        Handler handler = new Handler();
+        Runnable updateData = new Runnable() {
+            @Override
+            public void run() {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(linearLayoutManager);
+                // call the constructor of UsersAdapter to send the reference and data to Adapter
+                hakayatAdapter = new HakayatAdapter(childHakayatCategoryList);
+                recyclerView.setAdapter(hakayatAdapter); // set the Adapter to RecyclerView
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        };
+        handler.postDelayed(updateData, 3000);
     }
 
     private void getData() {
@@ -85,10 +120,10 @@ public class ChatsFragment extends Fragment {
         if (progressDoalog != null)
             progressDoalog.dismiss();
     }
-//
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.app_menu, menu);
-//    }
+
+    @Override
+    public void onRefresh() {
+        refreshContent();
+
+    }
 }
