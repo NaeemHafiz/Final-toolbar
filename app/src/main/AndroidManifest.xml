@@ -11,23 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustomTablayoutActivity">
-
-        </activity>
-        <activity
-            android:name=".NavigationActivity"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".CustomTabActivity">
-
-        </activity>
-        <activity android:name=".MainActivity" >
+        <activity android:name=".HorizontalRecyclerviewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
+        </activity>
+        <activity android:name=".CustomTablayoutActivity" />
+        <activity
+            android:name=".NavigationActivity"
+            android:label="@string/title_activity_navigation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CustomTabActivity" />
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 
