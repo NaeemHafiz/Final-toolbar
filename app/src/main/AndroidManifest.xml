@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestUIActivity">
+        <activity android:name=".SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,8 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".HorizontalRecyclerviewActivity"></activity>
+        <activity android:name=".TestUIActivity"></activity>
+        <activity android:name=".HorizontalRecyclerviewActivity" />
         <activity android:name=".CustomTablayoutActivity" />
         <activity
             android:name=".NavigationActivity"

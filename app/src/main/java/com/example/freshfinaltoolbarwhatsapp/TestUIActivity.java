@@ -24,7 +24,8 @@ public class TestUIActivity extends AppCompatActivity {
             String Name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
             String number = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
             number = number.replaceAll("\\s+", "");
-            Toast.makeText(TestUIActivity.this, Name + "\n" + number, Toast.LENGTH_SHORT).show();
+            String[] array = new String[]{Name, number};
+            Toast.makeText(TestUIActivity.this, array[0] + " " + array[1], Toast.LENGTH_SHORT).show();
         }
     }
 

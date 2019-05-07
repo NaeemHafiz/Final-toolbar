@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.freshfinaltoolbarwhatsapp"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -34,9 +34,13 @@ dependencies {
     //recyclerview dependency
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     //adding Retrofit  with this line
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.google.firebase:firebase-core:16.0.9'
 //    adding GSON with this line
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'// Old 2.8.0
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'// Old 2.8.0
+
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
 
 
 }
+apply plugin: 'com.google.gms.google-services'
