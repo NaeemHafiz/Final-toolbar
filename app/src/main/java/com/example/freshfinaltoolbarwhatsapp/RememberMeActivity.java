@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RememberMeActivity extends Activity implements OnClickListener {
 
@@ -40,6 +41,7 @@ public class RememberMeActivity extends Activity implements OnClickListener {
             editTextUsername.setText(loginPreferences.getString("username", ""));
             editTextPassword.setText(loginPreferences.getString("password", ""));
             saveLoginCheckBox.setChecked(true);
+            startActivity(new Intent(RememberMeActivity.this,SigninActivity.class));
         }
     }
 
@@ -60,8 +62,10 @@ public class RememberMeActivity extends Activity implements OnClickListener {
                 loginPrefsEditor.clear();
                 loginPrefsEditor.commit();
             }
-
-            doSomethingElse();
+            if (username.equals("naeem") && password.equals("123"))
+                doSomethingElse();
+            else
+                Toast.makeText(RememberMeActivity.this, "Invalid Credntials", Toast.LENGTH_SHORT).show();
         }
     }
 
