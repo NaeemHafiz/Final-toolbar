@@ -41,7 +41,7 @@ public class RememberMeActivity extends Activity implements OnClickListener {
             editTextUsername.setText(loginPreferences.getString("username", ""));
             editTextPassword.setText(loginPreferences.getString("password", ""));
             saveLoginCheckBox.setChecked(true);
-            startActivity(new Intent(RememberMeActivity.this,SigninActivity.class));
+            startActivity(new Intent(RememberMeActivity.this, SigninActivity.class));
         }
     }
 
