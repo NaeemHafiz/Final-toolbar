@@ -93,16 +93,13 @@ public class OPTAuthentication extends AppCompatActivity {
                 mCallBack
         );
     }
-
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
             mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             verificationid = s;
         }
-
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
@@ -111,7 +108,6 @@ public class OPTAuthentication extends AppCompatActivity {
                 verifyCode(code);
             }
         }
-
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Toast.makeText(OPTAuthentication.this, e.getMessage(), Toast.LENGTH_LONG).show();

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/uname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:hint="Username"
+        android:imeOptions="actionNext"
+        android:inputType="textNoSuggestions" />
+
+    <EditText
+        android:id="@+id/pwrd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uname"
+        android:layout_alignParentLeft="true"
+        android:hint="Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword" />
+
+    <CheckBox
+       android:id="@+id/chbox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pwrd"
+        android:layout_alignParentLeft="true"
+        android:text="Save Login?"
+        android:textColor="#FFF" />
+
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chbox"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="40dp"
+        android:text="Login" />
+
+</RelativeLayout>
